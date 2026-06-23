@@ -1,13 +1,13 @@
-# Supply Chain Risk Intelligence: End-to-End AI-Driven Decision Support System
+# Supply Chain Risk Intelligence: AI-Driven Decision Support System
 
-## 1. Latar Belakang dan Konteks Bisnis
-Dalam manajemen logistik global, informasi mengenai disrupsi operasional—seperti konflik geopolitik, pemogokan kerja, hingga bencana alam—sering kali tersebar dalam bentuk data tekstual tidak terstruktur seperti berita atau laporan intelijen. Tantangan utamanya adalah lambatnya proses konversi informasi tersebut menjadi keputusan taktis yang terukur secara finansial.
+## 1. Latar Belakang dan Masalah Bisnis
 
-Proyek ini membangun sebuah purwarupa **Decision Support System (DSS)** hibrida. Sistem ini mengintegrasikan kapabilitas eksplorasi bahasa alami dari Large Language Model (LLM) untuk mengekstrak parameter operasional, kemudian menyelaraskannya ke dalam mesin inferensi statistik guna memproyeksikan probabilitas kegagalan rute serta eksposur kerugian finansial secara real-time.
+Dalam manajemen logistik, merespons gangguan operasional—seperti konflik regional atau bencana alam—secara cepat adalah hal krusial untuk mencegah kerugian. Namun, informasi mengenai gangguan ini sering kali muncul dalam bentuk teks berita yang tidak terstruktur. Manajer operasional kehilangan waktu berharga jika harus membaca dan menafsirkan teks ini secara manual, sementara model *machine learning* tradisional tidak dirancang untuk mencerna data non-numerik secara langsung.
 
-```text
-[Alur Kerja Komputasi]
-Teks Berita (Unstructured) -> DeepSeek API (Resolusi NER) -> Parameter Terstruktur (JSON)
-                                                                       |
-                                                                       v
-Keputusan Taktis (Streamlit) <-- Kalkulator Finansial <-- Mesin Inferensi XGBoost (.pkl)
+Proyek ini dibangun untuk menjembatani celah tersebut. Sistem ini merupakan purwarupa *Decision Support System* (DSS) yang mengotomatisasi konversi informasi tak terstruktur menjadi keputusan bisnis. 
+
+Pendekatan penyelesaian masalah dilakukan melalui dua tahap komputasi utama:
+1. **Ekstraksi Konteks (DeepSeek LLM):** Membaca teks berita logistik secara otomatis untuk mengekstrak variabel operasional penting (lokasi, estimasi durasi penundaan, dan tingkat keparahan gangguan).
+2. **Estimasi Risiko (XGBoost Classifier):** Menggunakan data historis untuk menghitung probabilitas kegagalan rute logistik berdasarkan variabel yang telah diekstrak pada tahap pertama.
+
+Hasil akhirnya bukan sekadar prediksi statistik, melainkan sebuah dasbor yang secara langsung mengalkulasi rasio eksposur finansial. Sistem memberikan rekomendasi mitigasi yang jelas kepada pengguna (seperti peringatan untuk mengalihkan rute) sebelum gangguan tersebut berdampak pada aset kargo.
